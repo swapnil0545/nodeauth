@@ -1,7 +1,23 @@
-body {
-  padding-top: 50px;
+ul.sucess li, ul.info, ul.error li{
+  margin:20px 0 20px 0;
+  padding: 15px;
+  border: 1px solid transperent;
+  border-radius: 5px;
+  list-style: none;
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+
+ul.success li{
+  color:#3c763d;
+  background: #dff0d8;
+  border-color: #d6e9c6;
+}
+ul.info li{
+  color:#31708f;
+  background: #d9edf7;
+  border-color: #bce8f1;
+}
+ul.error li{
+  color:#3c763d;
+  background: #dff0d8;
+  border-color: #d6e9c6;
 }

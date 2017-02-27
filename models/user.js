@@ -38,3 +38,20 @@ module.exports.createUser = function(newUser,callback){
         newUser.save(callback);
     })
 }
+
+module.exports.getUserByUsername = function(username, callback){
+    var query = {username : username};
+    User.findOne(query,callback);
+}
+
+module.exports.comparePassword = function(candidatepassword, hash, callback){
+    bcrypt.compare(candidatepassword,hash,function(err,isMatch){
+        if(err) return callback(err);
+        callback(null, isMatch);
+    });
+}
+
+module.exports.getUserById = function(id, callback){
+    User.findById(id,callback);
+}
+
