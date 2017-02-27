@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/user');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -28,16 +29,18 @@ router.post('/register', function(req, res, next) {
 
 
   //check for img field
-  if(req.files && req.files.profileimage){
+  console.log(req.files);
+  console.log(req.files.profileimage);
+  if(req.files){
     console.log('uploading file...');
     
     //file info
-    var profileImageOriginalName = req.files.profileimage.originalname;
-    var profileImageName = req.files.profileimage.name;
-    var profileImageMime = req.files.profileimage.mimetype;
-    var profileImagePath = req.files.profileimage.path;
-    var profileImageExt = req.files.profileimage.extension;
-    var profileImageSize = req.files.profileimage.size;
+    var profileImageName = req.files[0].originalname;
+    //var profileImageOriginalName = req.body.profileimage.name;
+    var profileImageMime = req.files[0].mimetype;
+    var profileImagePath = req.files[0].path;
+    var profileImageExt = req.files[0].extension;
+    var profileImageSize = req.files[0].size;
   }else{
     //set a default profileimage
     var profileImageName= 'noimage.png';
@@ -69,7 +72,7 @@ router.post('/register', function(req, res, next) {
       username : username,
       password : password,
       password2 : password2,
-      profileimage : profileimageName
+      profileimage : profileImageName
     });
 
     //Create user
